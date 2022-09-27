@@ -1,172 +1,120 @@
-﻿start1:
-Console.WriteLine("Выберите какое действие хотите выполнить: ");
-Console.WriteLine("1. Сложить 2 числа ");
-Console.WriteLine("2. Вычесть первое из второго ");
-Console.WriteLine("3. Перемножить два числа ");
-Console.WriteLine("4. Разделить первое на второе ");
-Console.WriteLine("5. Возвести первое число в степень из второго числа ");
-Console.WriteLine("6. Найти квадратный корень из числа ");
-Console.WriteLine("7. Найти 1 процент от числа ");
-Console.WriteLine("8. Найти факториал из числа ");
-Console.WriteLine("9. Выйти из программы ");
-
-st:
-int a = Convert.ToInt32(Console.ReadLine());
-while (a != 9)
+﻿while (2 * 2 == 4)
 {
-    if (a == 1)
+    Console.Clear();
+    Console.WriteLine(
+    "Консольный калькулятор\n" +
+    "1. Сложение 2-х чисел\n" +
+    "2. Вычитание 2-х чисел\n" +
+    "3. Умножение 2-х чисел\n" +
+    "4. Деление двух чисел\n" +
+    "5. Возведение числа в пользовательскую степень\n" +
+    "6. Вычисление квадратного корня\n" +
+    "7. Вычисление 1% от числа\n" +
+    "8. Вычисление факториала\n" +
+    "9. Выход"
+    );
+    Console.Write("Ввод типа операции: ");
+    string oper = Console.ReadLine();
+    string result = "0";
+    if (oper == "1")
     {
         Console.WriteLine("Введите первое число: ");
-        int b = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine("Введите второе число");
-        int c = Convert.ToInt32(Console.ReadLine());
-        if (c < 0)
-        {
-            Console.WriteLine(b + " + (" + c + ") = " + b + " - " + (c * -1) + " = " + (b + c));
-            goto start;
-        }
-        else
-        {
-            Console.WriteLine(b + " + " + c + " = " + (b + c));
-            goto start;
-        }
+        double first_num = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Введите второе число: ");
+        double second_num = Convert.ToDouble(Console.ReadLine());
+        result = Convert.ToString(first_num + second_num);
     }
-    if (a == 2)
+    else if (oper == "2")
     {
         Console.WriteLine("Введите первое число: ");
-        int b = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine("Введите второе число");
-        int c = Convert.ToInt32(Console.ReadLine());
-        if (c < 0)
-        {
-            Console.WriteLine(b + " - (" + c + ") = " + b + " + " + (c * -1) + " = " + (b - c));
-            goto start;
-        }
-        else
-        {
-            Console.WriteLine(b + " - " + c + " = " + (b - c));
-            goto start;
-        }
+        double first_num = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Введите второе число: ");
+        double second_num = Convert.ToDouble(Console.ReadLine());
+        result = Convert.ToString(first_num - second_num);
     }
-    if (a == 3)
+    else if (oper == "3")
     {
         Console.WriteLine("Введите первое число: ");
-        int b = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine("Введите второе число");
-        int c = Convert.ToInt32(Console.ReadLine());
-        if (c < 0)
-        {
-            Console.WriteLine(b + " * (" + c + ") = " + (b * c));
-            goto start;
-        }
-        else
-        {
-            Console.WriteLine(b + " * " + c + " = " + (b * c));
-            goto start;
-        }
+        double first_num = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Введите второе число: ");
+        double second_num = Convert.ToDouble(Console.ReadLine());
+        result = Convert.ToString(first_num * second_num);
     }
-    if (a == 4)
+    else if (oper == "4")
     {
         Console.WriteLine("Введите первое число: ");
-        double b = Convert.ToDouble(Console.ReadLine());
-        Console.WriteLine("Введите второе число");
-        double c = Convert.ToDouble(Console.ReadLine());
-        if (c == 0)
+        double first_num = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Введите второе число: ");
+        double second_num = Convert.ToDouble(Console.ReadLine());
+        if (second_num == 0)
         {
-            goto finish1;
-        }
-        if (c < 0)
-        {
-            Console.WriteLine(b + " / (" + c + ") = " + (b / c));
-            goto start;
+            result = "Ошибка: нельзя делить на 0";
         }
         else
         {
-            Console.WriteLine(b + " / " + c + " = " + (b / c));
-            goto start;
+            result = Convert.ToString(first_num / second_num);
         }
     }
-    if (a == 5)
+    else if (oper == "5")
     {
-        Console.WriteLine("Введите первое число: ");
-        int b = Convert.ToInt32(Console.ReadLine());
-        Console.ResetColor();
-        Console.WriteLine("Введите второе число");
-        int c = Convert.ToInt32(Console.ReadLine());
-        if (c < 0)
+        Console.Write("Введите первое число: ");
+        double first_num = Convert.ToDouble(Console.ReadLine());
+        Console.Write("Введите второе число: ");
+        double second_num = Convert.ToDouble(Console.ReadLine());
+        double raw_result = 1;
+        for (int i = 1; i <= second_num; i++)
         {
-            Console.WriteLine(b + " ^ (" + c + ") = " + (Math.Pow(b, c)));
-            goto start;
+            raw_result *= first_num;
+        }
+        result = Convert.ToString(raw_result);
+    }
+    else if (oper == "6")
+    {
+        Console.Write("Введите число: ");
+        double first_num = Convert.ToDouble(Console.ReadLine());
+        if (first_num < 0)
+        {
+            result = "Ошибка: нельзя считать корень отрицательного числа";
         }
         else
         {
-            Console.WriteLine(b + " ^ " + c + " = " + (Math.Pow(b, c)));
-            goto start;
+            result = Convert.ToString(Math.Sqrt(first_num));
         }
     }
-    if (a == 6)
+    else if (oper == "7")
     {
-        Console.WriteLine("Введите число: ");
-        int b = Convert.ToInt32(Console.ReadLine());
-        if (b < 0)
+        Console.Write("Введите число: ");
+        double first_num = Convert.ToDouble(Console.ReadLine());
+        result = Convert.ToString(first_num / 100);
+    }
+    else if (oper == "8")
+    {
+        Console.Write("Введите число: ");
+        int first_num = Convert.ToInt32(Console.ReadLine());
+        if (first_num < 1)
         {
-            goto finish3;
+            result = "Ошибка: нельзя вычислять факториал отрицательного числа";
         }
         else
         {
-            Console.WriteLine("Квадратный корень из " + b + " = " + (Math.Sqrt(b)));
-            goto start;
-        }
-    }
-    if (a == 7)
-    {
-        Console.WriteLine("Введите число: ");
-        double b = Convert.ToDouble(Console.ReadLine());
-        Console.WriteLine("1% числа " + b + " = " + (b / 100));
-        goto start;
-    }
-    if (a == 8)
-    {
-        Console.WriteLine("Введите число: ");
-        int b = Convert.ToInt32(Console.ReadLine());
-        if (b < 1)
-        {
-            goto finish3;
-        }
-        else
-        {
-            int d = b;
-            int c = b;
-            do
+            int raw_result = 1;
+            for (int i = 1; i <= first_num; i++)
             {
-                b = b * (c - 1);
-                c--;
-            } while (c > 1);
-            Console.WriteLine(d + "! = " + b);
-            goto start;
+                raw_result *= i;
+            }
+            result = Convert.ToString(raw_result);
         }
     }
-    if (a == 9)
+    else if (oper == "9")
     {
+        Console.Write("Press any key to exit :D");
+        Console.ReadKey();
         Environment.Exit(0);
     }
     else
     {
-        goto finish;
+        result = "Неверная операция";
     }
-start:
-    Console.WriteLine("Выберите действие еще раз");
-    goto st;
-finish:
-    Console.WriteLine("Вы выбрали неправильное дейстивие, попробуйте снова...");
-    Thread.Sleep(5000);
-    goto start1;
-finish1:
-    Console.WriteLine("На 0 делить нельзя, попробуйте повторить действие и ввести другие значения...");
-    Thread.Sleep(5000);
-    goto start1;
-finish3:
-    Console.WriteLine("Вы ввели неккоректное значение, попробуйте повторить действие и ввести другое значение");
-    Thread.Sleep(5000);
-    goto start1;
-}
+    Console.WriteLine("\nРезультат работы программы: " + result + "\nНажмите любую клавишу для продолжения");
+    Console.ReadKey();
+};
